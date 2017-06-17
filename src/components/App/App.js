@@ -11,17 +11,26 @@
  */
 
 import { h } from 'preact'
+import { route } from 'preact-router'
 import { connect } from 'preact-redux'
 
 import List from 'Component/List'
 
 const
-  App = ({ list, children }) => (
-    <div className='container'>
-      { children }
-      <List list={ list } />
-    </div>
-  ),
+  App = ({ list, children }) => {
+    const
+      handleClick = () => route('/add', true)
+
+    return (
+      <div className='container'>
+        { 0 < children.length
+            ? children
+            : <button type='button' onClick={ handleClick }>new item</button>
+        }
+        <List list={ list } />
+      </div>
+    )
+  },
 
   state2Props = state => state
 

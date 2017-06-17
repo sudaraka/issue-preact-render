@@ -30,7 +30,7 @@ export default env => {
 
       'resolve': {
         'alias': {
-          'Action': resolve('src/actions/'),
+          'Actions': resolve('src/actions.js'),
           'App': resolve('src/'),
           'Component': resolve('src/components/'),
           'Data': resolve('src/data/'),

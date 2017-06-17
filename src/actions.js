@@ -1,5 +1,5 @@
 /**
- * src/data/reducers/index.js: combined reducers
+ * src/actions.js: actions
  *
  * Copyright 2017 Sudaraka Wijesinghe <sudaraka@sudaraka.org>
  *
@@ -10,12 +10,15 @@
  *
  */
 
-import { combineReducers } from 'redux'
+export const
+  updateForm = payload => ({
+    'type': 'FORM_UPDATE',
+    payload
+  }),
 
-import list from 'Reducer/list'
-import form from 'Reducer/form'
+  clearForm = () => ({ 'type': 'FORM_CLEAR' }),
 
-export default combineReducers({
-  list,
-  form
-})
+  addItem = newItem => ({
+    'type': 'LIST_ADD',
+    'payload': newItem
+  })

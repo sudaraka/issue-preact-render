@@ -15,7 +15,7 @@ import { Provider } from 'preact-redux'
 import { Router } from 'preact-router'
 
 import store from 'Data/store'
-// import AccountForm from 'Form/Account'
+import Form from 'Component/Form'
 
 let
   rootElement
@@ -29,6 +29,9 @@ const
       <Provider store={ store }>
         <Router>
           <App path='/' />
+          <App path='/add'>
+            <Form />
+          </App>
         </Router>
       </Provider>,
       document.querySelector('#app'),

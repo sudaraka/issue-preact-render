@@ -1,5 +1,5 @@
 /**
- * src/data/reducers/index.js: combined reducers
+ * src/components/List/List.js: main application component
  *
  * Copyright 2017 Sudaraka Wijesinghe <sudaraka@sudaraka.org>
  *
@@ -10,12 +10,10 @@
  *
  */
 
-import { combineReducers } from 'redux'
+import { h } from 'preact'
 
-import list from 'Reducer/list'
-import form from 'Reducer/form'
-
-export default combineReducers({
-  list,
-  form
-})
+export default ({ list }) => (
+  <ul>
+    { list.map(item => (<li key='{ item }'>{ item }</li>)) }
+  </ul>
+)
