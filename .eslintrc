@@ -1,0 +1,7 @@
+{
+  "extends": "@sudaraka/default/preact",
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}
