@@ -10,38 +10,64 @@
  *
  */
 
-import { h, render } from 'preact'
-import { Provider } from 'preact-redux'
-import { Router } from 'preact-router'
-
-import store from 'Data/store'
-import Form from 'Component/Form'
-
-let
-  rootElement
+import { h, render, Component } from 'preact'
+import { Router, route } from 'preact-router'
 
 const
-  init = () => {
-    const
-      { 'default': App } = require('Component/App')  // eslint-disable-line global-require
+  INITIAL_STATE = [
+    'Thing 1',
+    'Thing 2',
+    'Thing 3'
+  ],
 
-    rootElement = render(
-      <Provider store={ store }>
-        <Router>
-          <App path='/' />
-          <App path='/add'>
-            <Form />
-          </App>
-        </Router>
-      </Provider>,
-      document.querySelector('#app'),
-      rootElement
-    )
+  handleShowMessageClick = () => route('/message', true),
+
+  handleHideMessageClick = () => route('/', true),
+
+  List = ({ list }) => (
+    <ul>
+      { list.map(item => (<li key='{ item }'>{ item }</li>)) }
+    </ul>
+  ),
+
+  Message = () => (
+    <div>
+      <p>
+        This message is rendered by a child component passed to the main App
+        component in a particular route.
+      </p>
+      <p>
+        Clinking show/hide buttons does not change the application state,
+        however the list is rendered with extra items in it.
+      </p>
+      <button type='button' onClick={ handleHideMessageClick }>hide message</button>
+    </div>
+  )
+
+class App extends Component {
+  componentWillMount() {
+    this.setState({ 'list': INITIAL_STATE })
   }
 
-init()
-
-if(module.hot) {
-  module.hot.accept('Component/App', init)
-  module.hot.accept('Data/store', init)
+  render({ children }, { list }) {
+    return (
+      <div className='container'>
+        { 0 < children.length
+            ? children
+            : <button type='button' onClick={ handleShowMessageClick }>show message</button>
+        }
+        <List list={ list } />
+      </div>
+    )
+  }
 }
+
+render(
+  <Router>
+    <App path='/' />
+    <App path='/message'>
+      <Message />
+    </App>
+  </Router>,
+  document.querySelector('#app')
+)

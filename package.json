@@ -4,10 +4,8 @@
   "description": "Demo app to test rendering issue with Preact or preact-router",
   "main": "index.js",
   "scripts": {
-    "prebuild": "npm run clean && npm test",
-    "build": "webpack --env.prod",
+    "build": "webpack",
     "clean": "rm -fr docs/",
-    "start": "webpack-dev-server --env.dev --hot",
     "pretest": "eslint src/",
     "test": "exit 0;"
   },
@@ -22,24 +20,13 @@
   },
   "homepage": "https://github.com/sudaraka/issue-preact-render#readme",
   "devDependencies": {
-    "@sudaraka/eslint-config-default": "^1.8.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "extract-text-webpack-plugin": "^2.1.2",
     "html-webpack-plugin": "^2.28.0",
     "preact": "^8.1.0",
-    "preact-redux": "^2.0.1",
     "preact-router": "^2.5.2",
-    "redux": "^3.6.0",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0",
-    "uglify-js": "github:mishoo/UglifyJS2#harmony-v2.8.22",
-    "uglifyjs-webpack-plugin": "^0.4.3",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5",
-    "webpack-merge": "^4.1.0"
+    "webpack": "^2.6.1"
   }
 }
