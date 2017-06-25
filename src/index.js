@@ -26,7 +26,7 @@ const
 
   List = ({ list }) => (
     <ul>
-      { list.map(item => (<li key='{ item }'>{ item }</li>)) }
+      { list.map(item => (<li key={ item }>{ item }</li>)) }
     </ul>
   ),
 
