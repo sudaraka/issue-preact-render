@@ -873,7 +873,7 @@ const INITIAL_STATE = ['Thing 1', 'Thing 2', 'Thing 3'],
   null,
   list.map(item => (0, _preact.h)(
     'li',
-    { key: '{ item }' },
+    { key: item },
     item
   ))
 ),
